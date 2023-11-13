@@ -1,0 +1,82 @@
+-- Create merged table with each month's data
+
+CREATE OR REPLACE TABLE `cyclistic-tripdata-400520.2022_tripdata.2022_merged_tripdata`
+AS
+
+(SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202201_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202202_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202203_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202204_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202205_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202206_1_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202206_2_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202207_1_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202207_2_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202208_1_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202208_2_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202209_1_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202209_2_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202210_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202211_tripdata`
+
+UNION DISTINCT
+
+SELECT *
+FROM `cyclistic-tripdata-400520.2022_tripdata.202212_tripdata`)

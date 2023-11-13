@@ -1,0 +1,13 @@
+-- Counts bike usage on each day of the week for members and
+-- casual users
+
+CREATE OR REPLACE TABLE `cyclistic-tripdata-400520.2022_tripdata.day_of_week` AS
+SELECT
+  day_of_week, COUNT(IF(member_casual = "member", 1, NULL)) AS member_day_of_week,
+  COUNT(IF(member_casual = "casual", 1, NULL)) AS casual_day_of_week
+FROM
+  `cyclistic-tripdata-400520.2022_tripdata.2022_merged_tripdata`
+GROUP BY
+  day_of_week
+ORDER BY
+  member_day_of_week DESC;

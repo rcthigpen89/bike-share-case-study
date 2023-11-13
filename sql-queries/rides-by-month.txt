@@ -1,0 +1,13 @@
+-- Breaks down ride uses by month and categorizes by member type
+
+CREATE OR REPLACE TABLE `cyclistic-tripdata-400520.2022_tripdata.rides_by_month` AS
+SELECT
+  EXTRACT(MONTH FROM started_at) as month,
+  COUNT(IF(member_casual = "member", 1, NULL)) AS member_bike_count,
+  COUNT(IF(member_casual = "casual", 1, NULL)) AS casual_bike_count
+FROM
+  `cyclistic-tripdata-400520.2022_tripdata.2022_merged_tripdata`
+GROUP BY
+  month
+ORDER BY
+  month

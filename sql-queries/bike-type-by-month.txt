@@ -1,0 +1,18 @@
+-- Displays monthly count of how many times each bike type was used for
+-- member and casual users
+
+CREATE OR REPLACE TABLE `cyclistic-tripdata-400520.2022_tripdata.bike_type_by_month` AS
+SELECT 
+  EXTRACT(MONTH FROM started_at) as month,
+  COUNT(IF(member_casual = "member" AND rideable_type = "classic_bike", 1, NULL)) AS member_classic,
+  COUNT(IF(member_casual = "member" AND rideable_type = "electric_bike", 1, NULL)) AS member_electric,
+  COUNT(IF(member_casual = "member" AND rideable_type = "docked_bike", 1, NULL)) AS member_docked,
+  COUNT(IF(member_casual = "casual" AND rideable_type = "classic_bike", 1, NULL)) AS casual_classic,
+  COUNT(IF(member_casual = "casual" AND rideable_type = "electric_bike", 1, NULL)) AS casual_electric,
+  COUNT(IF(member_casual = "casual" AND rideable_type = "docked_bike", 1, NULL)) AS casual_docked,
+FROM
+  `cyclistic-tripdata-400520.2022_tripdata.2022_merged_tripdata`
+GROUP BY
+  month
+ORDER BY
+  month

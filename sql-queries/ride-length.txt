@@ -1,0 +1,28 @@
+-- Converts ride length to seconds and finds average ride length
+-- for members and casual users across each month
+
+CREATE OR REPLACE TABLE `cyclistic-tripdata-400520.2022_tripdata.ride_length_member` AS
+SELECT
+  EXTRACT(MONTH FROM started_at) as month,
+  AVG(TIME_DIFF(ride_length, '0:0:0', second)) as avg_ride_length_member
+FROM
+  `cyclistic-tripdata-400520.2022_tripdata.2022_merged_tripdata`
+WHERE
+  member_casual = "member"
+GROUP BY
+  month
+ORDER BY
+  month;
+
+CREATE OR REPLACE TABLE `cyclistic-tripdata-400520.2022_tripdata.ride_length_casual` AS
+SELECT
+  EXTRACT(MONTH FROM started_at) as month,
+  AVG(TIME_DIFF(ride_length, '0:0:0', second)) as avg_ride_length_casual
+FROM
+  `cyclistic-tripdata-400520.2022_tripdata.2022_merged_tripdata`
+WHERE
+  member_casual = "casual"
+GROUP BY
+  month
+ORDER BY
+  month
